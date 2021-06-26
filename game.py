@@ -9,7 +9,7 @@ from scipy.spatial import distance
 
 class Game():
     def __init__(self):
-        pygame.init
+        pygame.init()
 
     def up_score(self):
         self.score += 1

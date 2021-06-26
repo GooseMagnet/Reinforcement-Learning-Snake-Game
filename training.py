@@ -3,7 +3,7 @@ import pygame
 import random
 import numpy
 import time
-from keras.models import load_model
+
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.optimizers import Adam
@@ -64,7 +64,7 @@ def play_random_games(initial_games=100000, score_requirement=5):
 
     print(accepted_scores)
 
-    return training_data, len(accepted_scores)
+    return training_data, len(accepted_scores), max(all_scores)
 
 
 def play_using_model(trained_model, games=1, size=None):
@@ -117,6 +117,7 @@ def play_using_model(trained_model, games=1, size=None):
     if len(apples_eaten) > 0: print('Highest Score:', max(apples_eaten))
 
     pygame.quit()
+
 
 def train_generation(trained_model, initial_games=100000, score_requirement=5):
     start_time = time.time()
@@ -181,7 +182,7 @@ def train_generation(trained_model, initial_games=100000, score_requirement=5):
 
     print(accepted_scores)
 
-    return training_data, len(accepted_scores)
+    return training_data, len(accepted_scores), max(apples_eaten)
 
 
 def train_model(training_data):
